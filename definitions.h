@@ -82,7 +82,7 @@ GEOMETRY ball_geometry =
 	}
 };
 
-GEOMETRY bar_geometry =
+GEOMETRY player_geometry =
 {
 	10, // numpoints
 	1, 10, // sizex, sizey
@@ -100,4 +100,27 @@ GEOMETRY bar_geometry =
 	{9,0},
 	}
 };
+
+OBJECT player1 = {
+	&player_geometry,
+	0,0, // initiala riktningspositioner
+	1,1, // initiala startpositioner
+	draw_object,
+	clear_object,
+	move_player,
+	set_object_speed
+};
+
+OBJECT player2 = {
+	&player_geometry,
+	0,0, // initiala riktningspositioner
+	(128-2),1, // initiala startpositioner
+	draw_object,
+	clear_object,
+	move_player,
+	set_object_speed
+};
+
+
+
 #endif
