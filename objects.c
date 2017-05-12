@@ -66,8 +66,6 @@ static OBJECT ball =
 	move_object,
 	set_object_speed
 };
-
-<<<<<<< HEAD
 /* SPELAR KONFIGURATIONER */ 
 char player1score = 0;
 char player2score = 0;
@@ -89,26 +87,5 @@ OBJECT player2 = {
 	draw_object,
 	clear_object,
 	move_player,
-=======
-static OBJECT player1bar = 
-{
-	&bar_geometry,		// geometri för en  boll
-	0,0,				// initiala riktningskoordinater
-	0,0,				// initial startposition
-	draw_object,
-	clear_object,
-	move_object,
-	set_object_speed
-};
 
-static OBJECT player2bar = 
-{
-	&bar_geometry,		// geometri för en  boll
-	0,0,				// initiala riktningskoordinater
-	128,0,				// initial startposition
-	draw_object,
-	clear_object,
-	move_object,
->>>>>>> a01e037b0541b730007e1fa8b3571f80c57d34cf
-	set_object_speed
 };
