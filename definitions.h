@@ -101,26 +101,6 @@ GEOMETRY player_geometry =
 	}
 };
 
-OBJECT player1 = {
-	&player_geometry,
-	0,0, // initiala riktningspositioner
-	1,1, // initiala startpositioner
-	draw_object,
-	clear_object,
-	move_player,
-	set_object_speed
-};
-
-OBJECT player2 = {
-	&player_geometry,
-	0,0, // initiala riktningspositioner
-	(128-2),1, // initiala startpositioner
-	draw_object,
-	clear_object,
-	move_player,
-	set_object_speed
-};
-
 
 
 #endif

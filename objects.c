@@ -1,5 +1,11 @@
 
+char out_of_bounds_x(POBJECT o){
+	return ((o->posx)<0 || (o->posx)>(128-(o->geo->sizex))); 
+}
 
+char out_of_bounds_y(POBJECT o){
+	return ((o->posy)<0 || (o->posy) >(64-(o->geo->sizey))); 
+}
 void set_object_speed(POBJECT o, int speedx, int speedy) {
 	o->dirx = speedx;
 	o->diry = speedy;
@@ -22,39 +28,56 @@ void clear_object(POBJECT o)
 	}
 }
 
-void move_object(POBJECT o)
-{
-	clear_object(o);
-	// Bestäm ny position genom att addera riktningskoordinater till akutuell position
-	o->posx += o->dirx;
-	o->posy += o->diry;
-	// varje if-sats ser till att bollen håller sig innanför displayen
-		
-	if(o->posx < 1){
-	// skifta x-riktning 180 grader	
-		o->dirx *= (-1);
-	}
-	
-	// längst åt höger, därför vill vi ta 128 - strl så att inte bollen försvinner ut
-	if(o->posx > (128 - o->geo->sizex)){
-	// skifta x-riktning 180 grader
-		o->dirx *= (-1);
-	}
-	
-	if(o->posy < 1){
-	// skifta y-riktning 180 grader
-		o->diry *= (-1);
-	}
-	
-	 // längst upp på displayen därav - strl
-	if(o->posy > (64 - o->geo->sizey)){
-	// skifta y-riktning 180 grader
-		o->diry *= (-1);
-	}
+/* BOLL KONFIGURATIONER */
+ void move_ball(POBJECT o)
+ {
+	 clear_object(o);
+	 o->posx = o->posx + o->dirx;
+	 o->posy = o->posy + o->diry;
+	 
+	 if(out_of_bounds_x(o))
+		 o->dirx = o->dirx (*-1);
 
-	draw_object(o);
+	if(is_out_of_bounds_y(o) || object_collide(o))
+		obj->diry = obj->diry * (-1);
+	
+ }
+
+/* Kollar ifall bollen kolliderar med en spelare */ 
+char object_collide(POBJECT o)
+{
+	// x och y värden till bollen
+	int x = o->posx;
+	int y = o->posy;
+	
+	// storleken till objeket
+	int sizex = o->geo->sizex;
+	int sizey = o->geo->sizey;
+	
+	//x och y värden till spelare1
+	int player1x = ptrplayer1->posx;
+	int player1y = ptrplayer1->posy;
+	
+	// x och y värden till spelare2
+	int player2x = ptrplayer2->posx;
+	int player2y = ptrplayer2->posy;
+	
+	// bredden och höjden på spelar-objektet
+	int playerheight = o->geo->sizey;
+	int playerwidth = o->geo->sizex;
+	
+	// ifall bollen och spelaren kolliderar returnerar vi 1
+	if(((sizex + x) >= player2x) && (y>=player2y) && (y <= player2y + playerheight) && ((y+sizey)>=player2y) && ((y+sizey)<=(player2y+playerheight)))
+		return 1;
 		
+	// ifall bollen och spelaren kolliderar returnerar vi 1	
+	if((x <= player1x + playerwidth)) && (y>=player1y) && (y <=(player1y + playerheight)) && ((y + sizey) <= player1y) && ((y + sizey) <= player1y + playerheight) 
+		return 1;
+		
+	// ifall de inte kolliderar så returnerar vi 0
+	return 0;
 }
+
 
 static OBJECT ball = 
 {
@@ -69,6 +92,15 @@ static OBJECT ball =
 /* SPELAR KONFIGURATIONER */ 
 char player1score = 0;
 char player2score = 0;
+
+void move_player(POBJECT o)
+{
+	if(out_of_bounds_y(o))
+		return;
+	clear_object(o);
+	o->posy = o->posy + o->diry;
+	draw_object(o);
+}
 
 OBJECT player1 = {
 	&player_geometry,
@@ -87,5 +119,10 @@ OBJECT player2 = {
 	draw_object,
 	clear_object,
 	move_player,
-
+	set_object_speed
 };
+
+// skapar pointers till våra objekt
+static POBJECT ptrball = &ball;
+static POBJECT ptrplayer1 = &player1;
+static POBJECT ptrplayer2 = &player2;
