@@ -3,7 +3,8 @@
  *
  */
 #include "delay.c"
-#include "asciidisplay.h"
+#include "asciidisplay.c"
+#include "graphicdisplay.c"
 #include "definitions.h"
 #include "objects.h"
 #include "keypad.c"

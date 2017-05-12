@@ -101,6 +101,4 @@ GEOMETRY player_geometry =
 	}
 };
 
-
-
 #endif
