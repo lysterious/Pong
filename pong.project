@@ -26,6 +26,7 @@
     <File Name="objects.c"/>
     <File Name="delay.c"/>
     <File Name="keypad.c"/>
+    <File Name="asciidisplay.c"/>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="md407-ram.x"/>
