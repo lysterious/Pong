@@ -19,6 +19,19 @@
   </Plugins>
   <Description/>
   <Dependencies/>
+  <VirtualDirectory Name="src">
+    <File Name="startup.c"/>
+    <File Name="definitions.h"/>
+    <File Name="graphicdisplay.c"/>
+    <File Name="objects.c"/>
+    <File Name="delay.c"/>
+    <File Name="keypad.c"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="resources">
+    <File Name="md407-ram.x"/>
+  </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
   <Settings Type="Executable">
     <GlobalSettings>
       <Compiler Options="" C_Options="" Assembler="">
@@ -124,17 +137,4 @@ monitor restart</PostConnectCommands>
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="src">
-    <File Name="startup.c"/>
-    <File Name="definitions.h"/>
-    <File Name="delay.h"/>
-    <File Name="keypad.h"/>
-    <File Name="graphicdisplay.c"/>
-    <File Name="objects.c"/>
-  </VirtualDirectory>
-  <VirtualDirectory Name="resources">
-    <File Name="md407-ram.x"/>
-  </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
 </CodeLite_Project>
