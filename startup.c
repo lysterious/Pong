@@ -32,6 +32,8 @@ void init_app(void)
     *GPIO_D_PUPDR |= 0x00aa0000;
 }
 
+//TJO
+
 void main(void)
 {
 	unsigned char c;
