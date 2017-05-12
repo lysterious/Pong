@@ -2,11 +2,11 @@
  * 	startup.c
  *
  */
-#include "delay.h"
+#include "delay.c"
 #include "asciidisplay.h"
 #include "definitions.h"
 #include "objects.h"
-#include "keypad.h"
+#include "keypad.c"
 
 void startup(void) __attribute__((naked)) __attribute__((section (".start_section")) );
 
@@ -35,7 +35,9 @@ void init_app(void)
 void main(void)
 {
 	unsigned char c;
-	POBJECT p = &ball;
+	POBJECT b = &ball;
+	POBJECT p1 = &player1;
+	POBJECT p2 = &player2;
 	init_app();
 	graphic_initalize();
 	graphic_clear_screen();
