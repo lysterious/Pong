@@ -1,4 +1,6 @@
-
+// 
+//	objects.c
+//
 char out_of_bounds_x(POBJECT o){
 	return ((o->posx)<0 || (o->posx)>(128-(o->geo->sizex))); 
 }
